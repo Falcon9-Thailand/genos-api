@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {    
-    res.status(204).send({success:"first app"})
+    res.send({success:"first app"})
  })
 
 
