@@ -9,7 +9,9 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(cors());
 
-
+app.get('/', (req, res) => {    
+    res.status(204).send({success:"first app"})
+ })
 
 
 app.listen(port, () => {
