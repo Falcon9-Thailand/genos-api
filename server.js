@@ -26,18 +26,19 @@ const client = new Client({
     client.query('SELECT * FROM Persons;', (err, result) => {
         if (err) throw err;
         res.send({data:result.rows});
-        client.end();
+        // client.end();
       });
   })
 
   app.post('/create', async (req,res)=>{
     const body = req.body;
     await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?);',
-    [body.personid,
-    body.lastname,
-    body.firstname,
-    body.address,
-    body.city
+    [
+    body.personid,
+    `${body.lastname}`,
+    `${body.firstname}`,
+    `${body.address}`,
+    `${body.city}`
     ],
     (err,result,field)=>{
         if(err){
@@ -48,7 +49,7 @@ const client = new Client({
             msg:"success",
             data:result
         });
-        client.end();
+        // client.end();
     });
   })
 
