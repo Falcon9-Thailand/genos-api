@@ -38,7 +38,7 @@ const client = new Client({
         `${body.lastname}`,
             `${body.firstname}`,
             `${body.address}`,
-            `${body.cityz}`
+            `${body.city}`
         ])
         res.send(res.rows[0])
         // { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
