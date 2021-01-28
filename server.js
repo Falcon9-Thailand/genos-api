@@ -25,7 +25,7 @@ const client = new Client({
   app.get('/',(req,res)=>{
     client.query('SELECT * FROM Persons;', (err, result) => {
         if (err) throw err;
-        res.send({data:result});
+        res.send({data:result.rows});
         client.end();
       });
   })
