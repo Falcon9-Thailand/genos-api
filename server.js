@@ -30,9 +30,9 @@ const client = new Client({
       });
   })
 
-  app.post('/create',(req,res)=>{
+  app.post('/create', async (req,res)=>{
     const body = req.body;
-    client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?);',
+    await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?);',
     [body.personid,
     body.lastname,
     body.firstname,
