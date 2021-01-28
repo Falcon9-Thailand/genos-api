@@ -60,7 +60,7 @@ const client = new Client({
     //     });
         // client.end();
     });
-  })
+//   })
 
 app.listen(port, () => {
     console.log("server running port:", port) // แสดงผล บน Console APP_PORT at 3000
