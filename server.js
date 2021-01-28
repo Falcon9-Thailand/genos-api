@@ -11,9 +11,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/',(req,res)=>{
-    res.send({success:"true"});
+    res.send('hello');
 });
 
 app.listen(port, () => {
-    console.log("server running port:", port) // แสดงผล บน Console APP_PORT at 3000
+    console.log("server running port:", process.env.APP_PORT) // แสดงผล บน Console APP_PORT at 3000
 });
