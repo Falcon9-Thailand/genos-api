@@ -32,19 +32,25 @@ const client = new Client({
 
   app.post('/create', async (req,res)=>{
     const body = req.body;
-    try {
-        const res = await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?)', [
-          parseInt(body.personid),
-        `${body.lastname}`,
-            `${body.firstname}`,
-            `${body.address}`,
-            `${body.city}`
-        ])
-        res.send(res.rows[0])
-        // { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
-      } catch (err) {
-        console.log(err.stack)
-      }
+    client.connect(
+        (error)=>{
+            if(error) throw new Error();
+            try {
+                const res = await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?)', [
+                  parseInt(body.personid),
+                `${body.lastname}`,
+                    `${body.firstname}`,
+                    `${body.address}`,
+                    `${body.city}`
+                ])
+                res.send(res.rows[0])
+                // { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
+              } catch (err) {
+                console.log(err.stack)
+              }
+        }
+    );
+    
 
     // await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?);',
     // [],
