@@ -30,6 +30,28 @@ const client = new Client({
       });
   })
 
+  app.post('/create',(req,res)=>{
+    const body = req.body;
+    client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?);',
+    [body.personid,
+    body.lastname,
+    body.firstname,
+    body.address,
+    body.city
+    ],
+    (err,result,field)=>{
+        if(err){
+            res.status(403).send({error:"errors"});
+        }
+        res.send({
+            status:"ok",
+            msg:"success",
+            data:result
+        });
+        client.end();
+    });
+  })
+
 app.listen(port, () => {
     console.log("server running port:", port) // แสดงผล บน Console APP_PORT at 3000
 });
