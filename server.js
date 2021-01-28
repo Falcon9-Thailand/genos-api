@@ -32,14 +32,8 @@ const client = new Client({
 
   app.post('/create', async (req,res)=>{
     const body = req.body;
-    await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?);',
-    [
-    body.personid,
-    `${body.lastname}`,
-    `${body.firstname}`,
-    `${body.address}`,
-    `${body.city}`
-    ],
+    await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (1,d,d,d,4401);',
+    [],
     (err,result,field)=>{
         if(err){
             console.error(err);
