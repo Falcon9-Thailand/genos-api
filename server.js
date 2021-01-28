@@ -10,16 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {  
-    try {
-          pool.query('SELECT * FROM test1',[],(error,result,fields)=>{
-        if(error){
-            res.statusCode(400).send({error:"errors"});
-        }
-        res.send({success:result});
-    });
-    } catch (error) {
-        res.send({success:error});
-    }   
+    res.send({success:"true"}) 
  })
 
 
