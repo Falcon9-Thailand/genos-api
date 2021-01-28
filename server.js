@@ -15,7 +15,7 @@ const client = new Client({
   
   client.connect();
   
-  client.query('SELECT * FROM test1;', (err, res) => {
+  client.query('SELECT * FROM Persons;', (err, res) => {
     if (err) throw err;
     for (let row of res.rows) {
       console.log(JSON.stringify(row));
