@@ -32,18 +32,32 @@ const client = new Client({
 
   app.post('/create', async (req,res)=>{
     const body = req.body;
-    await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (1,d,d,d,4401);',
-    [],
-    (err,result,field)=>{
-        if(err){
-            console.error(err);
-            res.status(403).send({error:err});
-        }
-        res.send({
-            status:"ok",
-            msg:"success",
-            data:result
-        });
+    try {
+        const res = await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?)', [
+          parseInt(body.personid),
+        `${body.lastname}`,
+            `${body.firstname}`,
+            `${body.address}`,
+            `${body.cityz}`
+        ])
+        res.send(res.rows[0])
+        // { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
+      } catch (err) {
+        console.log(err.stack)
+      }
+
+    // await client.query('INSERT INTO Persons (personid, lastname, firstname, address, city) VALUES (?,?,?,?,?);',
+    // [],
+    // (err,result,field)=>{
+    //     if(err){
+    //         console.error(err);
+    //         res.status(403).send({error:err});
+    //     }
+    //     res.send({
+    //         status:"ok",
+    //         msg:"success",
+    //         data:result
+    //     });
         // client.end();
     });
   })
