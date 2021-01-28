@@ -1,7 +1,15 @@
-const pool = require("../../config/connectdb");
-
+const pool = require("../../config/database");
 module.exports = {
-  create : (req,res)=>{
-    pool.query()
-  }
+  getUser: callBack => {
+    pool.query(
+      'SELECT id,name,lastname FROM test1',
+      [],
+      (error, results, fields) => {
+        if (error) {
+          return callBack(error);
+        }
+        return callBack(null, results);
+      }
+    )
+  },
 }

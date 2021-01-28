@@ -1,22 +1,17 @@
 const {
-    create
+  getUser
   } = require("./user.service");
-  module.exports = {
-    createUser: (req, res) => {
-      const body = req.body;
-      create(body, (err, results) => {
+  module.exports =  {
+    getUser: (req, res) => {
+      getUser((err, results) => {
         if (err) {
           console.log(err);
-          return res.status(500).json({
-            success: 0,
-            message: "Database connection errror"
-          });
+          return;
         }
-        return res.status(200).json({
+        return res.json({
           success: 1,
-          data: results
+          message: results
         });
       });
-    },
-
-  };
+    }
+    };
