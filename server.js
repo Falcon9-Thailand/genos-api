@@ -42,7 +42,8 @@ const client = new Client({
     ],
     (err,result,field)=>{
         if(err){
-            res.status(403).send({error:"errors"});
+            console.error(err);
+            res.status(403).send({error:err});
         }
         res.send({
             status:"ok",
